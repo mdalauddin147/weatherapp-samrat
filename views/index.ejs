@@ -4,18 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-compatible" content="IE-edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css"/>
+    <link rel="stylesheet" href="/styles.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Weather web app</title>
 
 </head>
 <body>
+    <!-- Navigation Bar -->
+  <div class="navbar">
+    <div class="user-info">
+        <i class="fas fa-user"></i>
+        <span id="user-name"><%= userName %></span>
+    </div>
+    <div class="default-location">
+        <i class="fas fa-map-marker-alt"></i>
+        <span id="default-location"><%= defaultLocation %></span>
+    </div>
+  </div>
      
     <div class="wrapper">
         <div class="sidebar">
           <div>
             <form class="search" id="search">
-              <input type="text" id="query" placeholder="Search..." />
+              <input type="text" id="query" placeholder="search!" value = <%= defaultLocation %>/>
               <button><i class="fas fa-search"></i></button>
             </form>
             <div class="weather-icon">
@@ -108,6 +119,6 @@
               </div>
             </div>
         </div>
-        <stript>  <script src="scripts.js"></script>
+        <script src="/scripts.js"></script>
 </body>
 </html>

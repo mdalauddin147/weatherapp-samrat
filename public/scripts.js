@@ -1,4 +1,3 @@
-//samrat
 const temp = document.getElementById("temp"),
   date = document.getElementById("date-time"),
   condition = document.getElementById("condition"),
@@ -80,63 +79,6 @@ function getPublicIp() {
 
 getPublicIp();
 
-
-
-// Function to show a notification
-function showNotification(title, body, icon) {
-    // Check if the browser supports notifications
-    if ("Notification" in window) {
-      // Check if the user has granted permission for notifications
-      if (Notification.permission === "granted") {
-        // Show the notification
-        new Notification(title, { body, icon });
-      } else if (Notification.permission !== "denied") {
-        // Request permission from the user
-        Notification.requestPermission().then((permission) => {
-          if (permission === "granted") {
-            // Show the notification after permission is granted
-            new Notification(title, { body, icon });
-          }
-        });
-      }
-    }
-  }
-
-
-// Function to check weather conditions and show notifications
-function checkWeatherConditionsForNotification(weatherData) {
-const { conditions, temp, uvindex } = weatherData.currentConditions;
-
-// Example: Show a notification for high UV index
-    if (uvindex >= 8) {
-        showNotification(
-        "High UV Index Alert",
-        `The current UV index is ${uvindex}. Take precautions when going outside.`,
-        "path/to/uv_index_icon.png"
-        );
-    }
-
-    // Example: Show a notification for extreme temperature
-    if (temp >= 25) {
-        showNotification(
-        "Extreme Temperature Alert",
-        `The current temperature is ${temp}°C. Stay hydrated and avoid prolonged exposure to heat.`,
-        "path/to/extreme_temp_icon.png"
-        );
-    }
-
-    // Example: Show a notification for specific weather condition
-    if (conditions === "rain") {
-        showNotification(
-        "Rain Alert",
-        "It's raining. Don't forget your umbrella!",
-        "path/to/rain_icon.png"
-        );
-    }
-}
-  
-   
-
 // function to get weather data
 function getWeatherData(city, unit, hourlyorWeek) {
     const apikey ="2c21ff640dc13053af2f28d7d23b4220";
@@ -174,10 +116,6 @@ function getWeatherData(city, unit, hourlyorWeek) {
       } else {
         updateForecast(data.days, unit, "week");
       }
-      
-      // Show notifications based on weather conditions
-      checkWeatherConditionsForNotification(data);
-
       sunRise.innerText = covertTimeTo12HourFormat(today.sunrise);
       sunSet.innerText = covertTimeTo12HourFormat(today.sunset);
     })
@@ -522,3 +460,55 @@ function changeTimeSpan(unit) {
     getWeatherData(currentCity, currentUnit, hourlyorWeek);
   }
 }
+
+
+
+// Cities add your own to get in search
+
+cities = [
+  {
+    country: "NP",
+    name: "kathmandu",
+    lat: "27.712020",
+    lng: "85.312950",
+  },
+  {
+    country: "Np",
+    name: "Janakpur",
+    lat: "27.264020",
+    lng: "86.014330",
+  },
+  {
+    country: "Np",
+    name: "Lahan ",
+    lat: "27.712020",
+    lng: "85.312950",
+  },
+  {
+    country: "Np",
+    name: "Jhapa ",
+    lat: "23.650141",
+    lng: "73.514427",
+  },
+  {
+    country: "Np",
+    name: "Nepalgunj",
+    lat: "28.054758",
+    lng: "81.614471",
+  },
+  {
+    country: "Np",
+    name:"Karnali",
+    lat: "29.580111",
+    lng: "82.444603",
+  },
+  {
+    country: "USA",
+    name:"Newyork Ny",
+    lat: "28.250010",
+    lng: "-82.172920",
+  },
+  
+];
+
+
